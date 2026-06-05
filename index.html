@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Squad Optimizer Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+
+<div class="app-container">
+    <header>
+        <h1>⚡ Hackathon Squad Optimizer</h1>
+        <p class="subtitle">Maximum Weight Independent Set Engine & Topological Visualizer</p>
+    </header>
+
+    <div class="main-grid">
+        <section class="panel input-panel">
+            <h2>System Input Data</h2>
+            <p class="panel-desc">Paste workspace matrix: <code>N M</code>, skill lists, and conflict links.</p>
+            <textarea id="inputData" spellcheck="false">
+8 7
+15 30 25 40 10 50 35 45
+1 2
+1 3
+2 4
+3 5
+4 6
+5 7
+6 8</textarea>
+            <button id="solveBtn" onclick="solveGraph()">Run Optimization Engine</button>
+        </section>
+
+        <section class="panel output-panel">
+            <h2>Optimization Metrics</h2>
+            <div id="outputPlaceholder" class="placeholder-text">Click "Run Optimization Engine" to evaluate system metrics.</div>
+            <div id="output" class="hidden"></div>
+        </section>
+    </div>
+
+    <div class="visualization-grid">
+        <section class="panel graph-panel">
+            <div class="graph-header">
+                <h2>Conflict Network Topography</h2>
+                
+                <div class="search-box">
+                    <input type="number" id="nodeSearchInput" placeholder="Find Coder ID (e.g. 5)..." min="1" />
+                    <button class="search-btn" onclick="searchNode()">🔍 Locate</button>
+                </div>
+
+                <div class="legend">
+                    <span class="legend-item"><span class="dot green"></span> Selected Team</span>
+                    <span class="legend-item"><span class="dot red"></span> Conflicting</span>
+                </div>
+            </div>
+            <div id="network"></div>
+        </section>
+
+        <aside class="panel inspector-panel">
+            <h2>Roster Node Inspector</h2>
+            <p class="panel-desc">Click any coder node in the network map to view deep structural metrics.</p>
+            <div id="inspectorDefault" class="placeholder-text">No node selected.</div>
+            <div id="inspectorContent" class="hidden"></div>
+        </aside>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
